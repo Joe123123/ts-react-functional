@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import { TextField } from "./TextField";
 import { Counter } from "./Counter";
 
