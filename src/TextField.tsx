@@ -16,9 +16,13 @@ interface Props {
   person: Person;
 }
 
-export const TextField: React.FC<Props> = () => {
+export const TextField: React.FC<Props> = ({ person, text }) => {
   return (
     <div>
+      <span>
+        {person.firstName} {person.lastName}
+      </span>
+      <span>{text}</span>
       <input type="text" />
     </div>
   );
