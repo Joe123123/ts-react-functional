@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 
 interface Person {
   firstName: string;
@@ -14,16 +14,24 @@ interface Props {
     f1: string;
   };
   person: Person;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const TextField: React.FC<Props> = ({ person, text }) => {
+interface TextNode {
+  text: string;
+}
+
+export const TextField: React.FC<Props> = ({ person, text, handleChange }) => {
+  const [count, setCount] = useState<TextNode>({ text: "hello" });
+  const inputRef = useRef<HTMLInputElement>(null);
+  const divRef = useRef<HTMLDivElement>(null);
   return (
-    <div>
+    <div ref={divRef}>
       <span>
         {person.firstName} {person.lastName}
       </span>
       <span>{text}</span>
-      <input type="text" />
+      <input type="text" ref={inputRef} onChange={handleChange} />
     </div>
   );
 };
